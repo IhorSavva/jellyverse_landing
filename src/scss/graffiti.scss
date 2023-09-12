@@ -1,0 +1,185 @@
+@import "variables.scss";
+
+.graffiti__image {
+  display: flex;
+  justify-content: end;
+}
+
+.graffiti__content {
+  width: 100%;
+  left: 0;
+  position: absolute;
+  overflow: hidden;
+  margin-top: -8.6rem;
+  padding-bottom: 30rem;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 10%, $col-graffiti-bg 10%, $col-graffiti-bg 90%, rgba(0,0,0,0) 90%);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 50%;
+    background-color: $col-graffiti-bg;
+    clip-path: ellipse(200% 100% at 50% 100%);
+    z-index: 0;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 50%;
+    background-color: $col-graffiti-bg;
+    clip-path: ellipse(200% 100% at 50% 0%);
+    z-index: -1;
+  }
+}
+
+.graffiti__description {
+  margin-top: 32rem;
+  margin-left: 20rem;
+  position: relative;
+  width: 66rem;
+  font-size: 2.8rem;
+  line-height: 4.4rem;
+  font-family: 'GalanoGrotesque', serif;
+  color: $col-text;
+}
+
+.graffiti__description-logo {
+  position: absolute;
+  top: 1rem;
+  width: 14.8rem;
+  height: 2.6rem;
+}
+
+.graffiti__wrapper {
+  position: relative;
+  max-width: 144rem;
+  width: 100%;
+}
+
+.graffiti__description-img {
+  z-index: 0;
+  position: absolute;
+  top: 60rem;
+  right: 10rem;
+  width: 56rem;
+  height: 56rem;
+}
+
+.graffiti__description-img-second {
+  position: absolute;
+  top: 100rem;
+  z-index: 100;
+  width: 56rem;
+  height: 56rem;
+}
+
+.graffiti__phrase {
+  z-index: 1;
+  width: 100%;
+  margin-top: 22rem;
+  color: $col-text;
+  font-size: 16.8rem;
+  line-height: 16rem;
+  letter-spacing: -5%;
+  font-family: 'GalanoGrotesque', serif;
+
+  :nth-child(1) {
+    margin-left: 35%;
+  }
+
+  :nth-child(3) {
+    margin-left: 60%;
+  }
+}
+
+.graffiti__phrase-second {
+  width: 100%;
+  margin-top: 13.2rem;
+  margin-left: 11rem;
+  color: $col-text;
+  font-size: 16.8rem;
+  line-height: 16rem;
+  letter-spacing: -5%;
+  font-family: 'GalanoGrotesque', serif;
+}
+
+.graffiti__phrase-third {
+  position: relative;
+  width: 100%;
+  margin-top: 12rem;
+  margin-left: 28rem;
+  color: $col-text;
+  font-size: 16.8rem;
+  line-height: 16rem;
+  letter-spacing: -5%;
+  font-family: 'GalanoGrotesque', serif;
+}
+
+.graffiti__logo {
+  z-index: 111;
+  top: -50%;
+  left: 20%;
+  position: absolute;
+}
+
+.graffiti__features-wrapper {
+  margin-top: 12rem;
+}
+
+.graffiti__features-title {
+  font-family: 'GalanoGrotesque', serif;
+  font-size: 2.8rem;
+  line-height: 4.2rem;
+  text-align: center;
+  color: $col-text;
+}
+
+.graffiti__features {
+  margin-top: 5.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 12.4rem;
+
+  .graffiti__features > * {
+    flex-basis: calc(33.3333% - 3.2rem);
+    margin-bottom: 3.2rem;
+  }
+
+  & > * {
+    margin-bottom: 8.2rem;
+    width: 35rem;
+  }
+}
+
+.graffiti__end-phrase {
+  z-index: 1;
+  width: 100%;
+  margin-top: 19.5rem;
+  color: $col-text;
+  font-size: 16.8rem;
+  line-height: 16rem;
+  letter-spacing: -5%;
+  font-family: 'GalanoGrotesque', serif;
+
+  :nth-child(1) {
+    margin-left: 19.4rem;
+  }
+
+  :nth-child(3) {
+    margin-left: 36rem;
+  }
+
+  :nth-child(5) {
+    margin-left: 28rem;
+  }
+}

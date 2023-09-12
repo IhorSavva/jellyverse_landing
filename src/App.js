@@ -1,13 +1,17 @@
 import Toolbar from "./components/Toolbar";
-import First from "./components/First";
+import Welcome from "./components/Welcome";
 import TickerLine from "./components/TickerLine";
+import Graffiti from "./components/Graffiti";
+import JellyDecoration from "./components/JellyDecoration";
 
 function App() {
   return (
     <div className="app__wrapper">
       <Toolbar/>
-      <First/>
+      <Welcome/>
       <TickerLine/>
+      <Graffiti/>
+      <JellyDecoration/>
     </div>
   );
 }

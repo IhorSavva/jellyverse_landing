@@ -1,0 +1,108 @@
+@import "variables.scss";
+
+.feature-card {
+  z-index: 1;
+  position: relative;
+  width: 35rem;
+  height: 42.8rem;
+  padding: 3.2rem 4.2rem 2rem;
+  border-radius: 1rem;
+  border: 2px $col-feature-card-border solid;
+
+  &--jellyswap {
+    background-color: $col-feature-jellyswap-card-bg;
+    border: none;
+  }
+
+  &--more {
+    padding: 2.4rem;
+    border: none;
+    background-color: $col-feature-more-bg;
+    color: $col-text;
+  }
+}
+
+.feature-card__icon {
+  width: 2.7rem;
+  height: 2.5rem;
+  margin-right: 1rem;
+}
+
+.feature-card__title {
+  z-index: 1;
+  font-size: 2.8rem;
+  line-height: 2.8rem;
+  font-family: 'GalanoGrotesque', serif;
+  color: $col-text;
+
+  &--jellyswap {
+    color: $col-feature-jellyswap-title;
+  }
+}
+
+.feature-card__description {
+  margin-top: 2.2rem;
+  font-family: 'GalanoGrotesque', serif;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: $col-text;
+
+  &--jly {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+
+  &--jellyswap {
+    color: $col-feature-jellyswap-title;
+  }
+}
+
+.feature-card__img {
+  width: 100%;
+  position: absolute;
+  bottom: -0.4rem;
+  left: 0;
+
+  &--jellybond {
+    position: absolute;
+    padding: 2rem;
+    bottom: -2rem;
+  }
+}
+
+.feature-card__img--more {
+  position: absolute;
+  width: 12.2rem;
+  bottom: 2.4rem;
+  right: 2rem;
+}
+
+.feature-card__decoration-img-first {
+  z-index: -1;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 34rem;
+}
+
+.feature-card__decoration-img-second {
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 2.6rem;
+  width: 33.8rem;
+}
+
+.feature-card__decoration-img-third {
+  z-index: -1;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 24rem;
+}
+
+.feature-card__more {
+  font-family: 'GalanoGrotesque', serif;
+  font-size: 7.2rem;
+  line-height: 7.6rem;
+}
