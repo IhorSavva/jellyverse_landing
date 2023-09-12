@@ -6,6 +6,14 @@
   margin: 0;
 }
 
+//button {
+//  all: unset;
+//}
+//
+//button:focus {
+//  outline: revert;
+//}
+
 #root {
   width: 100vw;
   overflow: hidden;
@@ -147,9 +155,18 @@ body {
   margin-bottom: 0.6rem;
   position: relative;
   cursor: pointer;
+
+  &>svg>.svg-icon {
+    fill: $col-social-icon;
+  }
+
+  &>svg>.svg-icon-fill {
+    fill: $col-vulcan;
+  }
 }
 
-.icon-link__icon-volume {
+
+.icon-volume {
   z-index: 1;
   position: absolute;
   bottom: -0.2rem;

@@ -1,40 +1,21 @@
-import telegram from '../../assets/icons/telegram.svg';
-import discord from '../../assets/icons/discord.svg';
-import x from '../../assets/icons/x.svg';
-import facebook from '../../assets/icons/facebook.svg';
-import linkedin from '../../assets/icons/linkedin.svg';
-import reddit from '../../assets/icons/reddit.svg';
-import volume from '../../assets/icons/volume.svg';
+import TelegramIcon from "../icons/TelegramIcon";
+import DiscordIcon from "../icons/DiscordIcon";
+import XIcon from "../icons/XIcon";
+import FacebookIcon from "../icons/FacebookIcon";
+import LinkedinIcon from "../icons/LinkedinIcon";
+import RedditIcon from "../icons/RedditIcon";
+import VolumeIcon from "../icons/VolumeIcon";
 
 function IconLink(props) {
-  let iconName;
-  switch (props.icon) {
-    case 'telegram':
-      iconName = telegram
-      break;
-    case 'discord':
-      iconName = discord
-      break;
-    case 'x':
-      iconName = x
-      break;
-    case 'facebook':
-      iconName = facebook
-      break;
-    case 'linkedin':
-      iconName = linkedin
-      break;
-    case 'reddit':
-      iconName = reddit
-      break;
-    default:
-      iconName = telegram
-  }
-
   return (
     <div className="icon-link">
-      <img src={iconName} className="icon-link__icon" alt="icon-link"/>
-      {props.isVolume && <img src={volume} className="icon-link__icon-volume" alt="icon-volume"/>}
+      {props.icon === 'telegram' && <TelegramIcon/>}
+      {props.icon === 'discord' && <DiscordIcon/>}
+      {props.icon === 'x' && <XIcon/>}
+      {props.icon === 'facebook' && <FacebookIcon/>}
+      {props.icon === 'linkedin' && <LinkedinIcon/>}
+      {props.icon === 'reddit' && <RedditIcon/>}
+      {props.isVolume && <VolumeIcon className="icon-link__icon-volume" />}
     </div>
   );
 }
