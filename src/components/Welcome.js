@@ -3,8 +3,8 @@ import IconLink from "./common/IconLink";
 
 function Welcome() {
   return (
-    <div className="app-first">
-      <div className="app-first__links">
+    <div className="welcome app__wrapper">
+      <div className="welcome__links">
         <IconLink icon="telegram" />
         <IconLink icon="telegram" isVolume />
         <IconLink icon="discord" />
@@ -13,7 +13,7 @@ function Welcome() {
         <IconLink icon="linkedin" />
         <IconLink icon="reddit" />
       </div>
-      <div className="app-first__header animation-sentence">
+      <div className="welcome__header animation-sentence">
         <span>welcome <br/>to defi 3.0</span>
         <br/>
         <span>let's dive</span>
@@ -22,7 +22,7 @@ function Welcome() {
         <br/>
         <span>the jellyVerse</span>
       </div>
-      <img src={jelly} className="app-first__jelly" alt="jelly"/>
+      <img src={jelly} className="welcome__jelly" alt="jelly"/>
     </div>
   );
 }

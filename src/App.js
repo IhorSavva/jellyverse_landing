@@ -6,10 +6,10 @@ import JellyDecoration from "./components/JellyDecoration";
 
 function App() {
   return (
-    <div className="app__wrapper">
+    <div className="">
       <Toolbar/>
       <Welcome/>
-      <TickerLine/>
+      {/*<TickerLine/>*/}
       <Graffiti/>
       <JellyDecoration/>
     </div>
