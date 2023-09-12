@@ -3,6 +3,7 @@ import Welcome from "./components/Welcome";
 import TickerLine from "./components/TickerLine";
 import Graffiti from "./components/Graffiti";
 import JellyDecoration from "./components/JellyDecoration";
+import BurnEvent from "./components/BurnEvent";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       {/*<TickerLine/>*/}
       <Graffiti/>
       <JellyDecoration/>
+      <BurnEvent/>
     </div>
   );
 }
