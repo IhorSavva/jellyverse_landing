@@ -38,27 +38,50 @@
   width: 100%;
 }
 
-.graffiti__description-img {
+.graffiti__img-first-wrapper {
   z-index: 0;
   position: absolute;
-  top: 60rem;
+  top: 0;
   right: 10rem;
   width: 56rem;
+  height: 100rem;
+}
+
+.graffiti__img-second-wrapper {
+  z-index: 0;
+  position: absolute;
+  top: 50rem;
+  width: 100rem;
+  height: 58rem;
+}
+
+.graffiti__img-third-wrapper {
+  z-index: 0;
+  position: absolute;
+  top: 98rem;
+  right: -20rem;
+  width: 88rem;
+  height: 68rem;
+}
+
+.graffiti__description-img {
+  width: 56rem;
   height: 56rem;
+  position: absolute;
+  transition: all 10s linear;
 }
 
 .graffiti__description-img-second {
   position: absolute;
-  top: 100rem;
   width: 56rem;
   height: 56rem;
+  transition: all 10s linear;
 }
 
 .graffiti__description-img-third {
   position: absolute;
-  top: 98rem;
-  right: -10.2rem;
   width: 68rem;
+  transition: all 10s linear;
 }
 
 .graffiti__phrase {

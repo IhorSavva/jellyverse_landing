@@ -1,5 +1,5 @@
 import IconLink from "./common/IconLink";
-import JellyverseLogo from "./common/JellyverseLogo";
+import JellyverseLogo from "./icons/JellyverseIcon";
 import coinMarketCap from "../assets/coin_market_cap.svg";
 import lama from "../assets/lama.svg";
 import circle from "../assets/circle.svg";

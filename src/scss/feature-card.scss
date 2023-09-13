@@ -1,5 +1,48 @@
 @import "variables.scss";
 
+.feature-card__wrapper {
+  position: relative;
+  width: 35rem;
+  height: 42.8rem;
+  cursor: pointer;
+}
+
+.feature-card__card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  perspective: 50rem;
+}
+
+.feature-card__content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.feature-card__content-front,
+.feature-card__content-back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+}
+
+.feature-card__content-back {
+  text-align: center;
+  padding: 3.2rem 4.2rem 2rem;
+  border-radius: 1rem;
+  box-shadow: inset 0 0 0 0.2rem $col-feature-card-border;
+  transform: rotateY(180deg);
+
+  font-family: 'GalanoGrotesque', serif;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: $col-text;
+}
+
 .feature-card {
   z-index: 1;
   position: relative;

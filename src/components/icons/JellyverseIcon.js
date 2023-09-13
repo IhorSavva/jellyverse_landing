@@ -1,4 +1,4 @@
-function JellyverseLogo() {
+function JellyverseIcon() {
   return (
     <svg width="148" height="26" viewBox="0 0 148 26" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path className="jellyverse-svg-icon" d="M62.5133 0.0351562H58.7188V20.7035H62.5133V0.0351562Z"/>
@@ -20,4 +20,4 @@ function JellyverseLogo() {
   );
 }
 
-export default JellyverseLogo;
+export default JellyverseIcon;

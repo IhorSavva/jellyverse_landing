@@ -6,6 +6,7 @@ import JellyDecoration from "./components/JellyDecoration";
 import BurnEvent from "./components/BurnEvent";
 import Footer from "./components/Footer";
 
+
 function App() {
   return (
     <div className="">
