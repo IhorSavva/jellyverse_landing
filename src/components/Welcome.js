@@ -1,4 +1,4 @@
-import jelly from '../assets/jelly.png';
+import jellyfish from '../assets/jellyfish.svg';
 import IconLink from "./common/IconLink";
 
 function Welcome() {
@@ -13,16 +13,16 @@ function Welcome() {
         <IconLink icon="linkedin" />
         <IconLink icon="reddit" />
       </div>
-      <div className="welcome__header animation-sentence">
+      <div className="welcome__header">
         <span>welcome <br/>to defi 3.0</span>
         <br/>
         <span>let's dive</span>
         <br/>
         <span>into</span>
         <br/>
-        <span>the jellyVerse</span>
+        <span>the jellyverse</span>
       </div>
-      <img src={jelly} className="welcome__jelly" alt="jelly"/>
+      <img src={jellyfish} className="welcome__jelly" alt="jelly"/>
     </div>
   );
 }

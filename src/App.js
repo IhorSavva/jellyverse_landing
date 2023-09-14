@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="">
+    <div className="app">
       <Toolbar/>
       <Welcome/>
       {/*<TickerLine/>*/}

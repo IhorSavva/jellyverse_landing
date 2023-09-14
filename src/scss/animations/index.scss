@@ -1,7 +1,8 @@
+@import "../variables.scss";
+
 .animation-sentence span {
   display: inline-block;
   opacity: 0;
-  font-size: 12rem;
   transition: opacity 1s, transform 1s;
 }
 
@@ -36,13 +37,12 @@
 @keyframes showAndGrowFirst {
   0% {
     opacity: 1;
-    font-size: 12rem;
   }
 
   100% {
     opacity: 1;
-    font-size: 16.8rem;
   }
+
   50% {
     opacity: 1;
   }
@@ -52,11 +52,12 @@
   0% {
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 1;
-    font-size: 16.8rem;
   }
 }

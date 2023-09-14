@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import "../variables";
 
 .footer__wrapper {
   width: 100%;
@@ -8,6 +8,13 @@
   margin-top: 80rem;
   height: 50rem;
   background-color: $col-footer-bg;
+
+  @media (max-width: $screen-medium-size) {
+    & {
+      padding: 9.2rem 2rem 2.4rem 2rem;
+      height: 89rem;
+    }
+  }
 }
 
 .footer__social-links {
@@ -22,6 +29,14 @@
   &>.icon-link>svg>.svg-icon-fill {
     fill: $col-footer-bg;
   }
+
+  @media (max-width: $screen-medium-size) {
+    & {
+      position: absolute;
+      right: 2rem;
+      top: 34%;
+    }
+  }
 }
 
 .jellyverse-svg-icon {
@@ -35,11 +50,31 @@
 
 .footer__content {
   width: 110rem;
+
+  @media (max-width: $screen-medium-size) {
+    & {
+      width: 100%;
+    }
+  }
 }
 
 .footer__column-container {
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: $screen-medium-size) {
+    & {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+.footer__content-column-field {
+  @media (max-width: $screen-medium-size) {
+    & {
+      margin-bottom: 12.4rem;
+    }
+  }
 }
 
 .footer__footer-link {
@@ -76,12 +111,39 @@
   & > * {
     margin-right: 6rem;
   }
+
+  @media (max-width: $screen-medium-size) {
+    & {
+      flex-direction: column;
+    }
+
+    & > * {
+      margin-bottom: 2.2rem;
+    }
+  }
 }
 
 .footer__column-end-container {
   display: flex;
   justify-content: space-between;
   margin-top: 9.4rem;
+
+  @media (max-width: $screen-medium-size) {
+    & {
+      flex-direction: column;
+    }
+  }
+}
+
+.footer__column-audited-by {
+  @media (max-width: $screen-medium-size) {
+    & {
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      margin-top: 5.4rem;
+    }
+  }
 }
 
 .footer__column-end-container-text {

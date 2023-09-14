@@ -64,7 +64,7 @@ function Footer() {
                 </div>
               </div>
             </div>
-            <div className="footer__content-column">
+            <div className="footer__content-column footer__content-column-field">
               <span className="footer__content-column-title">
                 See you later, alligator :)
               </span>
@@ -79,7 +79,7 @@ function Footer() {
           </div>
           <div className="footer__column-end-container">
             <div className="footer__column-end-container-text">Feedback or comments? Get in touch with us at <span className="footer__support-email">reachout@jellyverse.com</span></div>
-            <div className="footer__column-end-container-text">
+            <div className="footer__column-end-container-text footer__column-audited-by">
               Audited by
               <img src={circle} className="footer__circle" alt="circle"/>
               <img src={circle} className="footer__circle" alt="circle"/>
