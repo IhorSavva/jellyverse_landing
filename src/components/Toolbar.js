@@ -3,7 +3,7 @@ import AppLink from "./common/AppLink";
 
 function Toolbar() {
   return (
-    <div className="app-toolbar app__wrapper">
+    <div className="app-toolbar">
       <div className="app_toolbar__logo-wrp">
         <img
           src={logo}

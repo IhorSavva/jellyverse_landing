@@ -1,6 +1,18 @@
 @import "../variables.scss";
 
 .welcome {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+
+.welcome__header-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome__content {
   width: 100%;
   padding: 0 2rem 3.6rem;
   display: flex;
@@ -74,20 +86,15 @@
       line-height: 5.2rem;
     }
   }
-
-  //:nth-child(1) {
-  //  margin-left: 12.6rem;
-  //}
-  //
-  //:nth-child(3) {
-  //  margin-left: 50rem;
-  //}
-  //
-  //:nth-child(5) {
-  //  margin-left: 28rem;
-  //}
-  //
-  //:nth-child(7) {
-  //  margin-left: 12rem;
-  //}
 }
+
+//.app {
+//  overflow-y: auto;
+//  height: 100vh;
+//
+//  scroll-snap-type: y mandatory;
+//}
+//
+//.app > * {
+//  scroll-snap-align: start;
+//}
