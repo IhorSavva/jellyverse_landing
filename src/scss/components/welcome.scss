@@ -1,9 +1,17 @@
 @import "../variables.scss";
 
 .welcome {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100vh;
+}
+
+.welcome-third {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
 }
 
 
@@ -33,6 +41,11 @@
   top: 1.6rem;
   right: 20rem;
   transform: rotate(-20deg);
+
+  &--left {
+    left: 20rem;
+    transform: rotate(20deg);
+  }
 
   @media (max-width: $screen-medium-size) {
     & {
@@ -88,13 +101,17 @@
   }
 }
 
-//.app {
-//  overflow-y: auto;
-//  height: 100vh;
-//
-//  scroll-snap-type: y mandatory;
-//}
-//
-//.app > * {
-//  scroll-snap-align: start;
-//}
+.welcome__graffiti-wrapper {
+  height: 70vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  scroll-snap-align: end;
+}
+
+.welcome__graffiti-img {
+  width: 82rem;
+  height: 58rem;
+}

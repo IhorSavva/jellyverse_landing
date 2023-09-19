@@ -3,10 +3,12 @@
 .footer__wrapper {
   width: 100%;
   padding: 9rem 12rem 10rem 2rem;
+  scroll-snap-align: end;
 
-  position: absolute;
-  margin-top: 80rem;
-  height: 50rem;
+  //position: absolute;
+  //bottom: 0;
+  //margin-top: 80rem;
+  //height: 50rem;
   background-color: $col-footer-bg;
 
   @media (max-width: $screen-medium-size) {

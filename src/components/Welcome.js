@@ -4,7 +4,7 @@ import Toolbar from "./Toolbar";
 
 function Welcome() {
   return (
-    <div className="welcome">
+    <div className="welcome app__wrapper">
       <Toolbar/>
       <div className="welcome__content">
         <div className="welcome__links">

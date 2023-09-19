@@ -9,14 +9,6 @@ import FeatureCard from "./common/FeatureCard";
 function Graffiti() {
   return (
     <div className="graffiti">
-      <div className="graffiti__image app__wrapper">
-        <img
-          src={graffiti}
-          className="graffiti__image-img"
-          alt="graffiti"
-        />
-      </div>
-      {/*<div className="graffiti__start-side"/>*/}
       <div className="graffiti__content">
         <div className="graffiti__wrapper app__wrapper">
           <div className="graffiti__description">
