@@ -165,24 +165,20 @@ body {
   }
 }
 
-.jelly-decoration {
+.jellyfish-wrapper {
   width: 100%;
-  padding-bottom: 9.2rem;
+  transition: all 0.5s ease;
 }
 
-.jelly-decoration__img {
+.jellyfish__img {
   z-index: 11;
-  margin-top: -34rem;
   transform: rotate(24deg);
-  margin-left: 52rem;
   width: 42rem;
   height: 60rem;
 
   @media (max-width: $screen-medium-size) {
     & {
       transform: rotate(-20deg);
-      margin-top: -200%;
-      margin-left: 20%;
     }
   }
 }

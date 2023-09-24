@@ -2,7 +2,7 @@ import FeatureCard from "../common/FeatureCard";
 
 function FeaturingList() {
   return (
-    <div className="graffiti">
+    <div className="graffiti features-list">
       <div className="graffiti__content">
         <div className="graffiti__wrapper app__wrapper">
 

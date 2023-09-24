@@ -81,8 +81,9 @@
 }
 
 .welcome__header {
+  transition: all 1s ease-out;
   width: 100%;
-  z-index: 1;
+  z-index: 1100;
   margin-top: 15rem;
   color: $col-text;
   font-size: 16.8rem;
@@ -114,4 +115,35 @@
 .welcome__graffiti-img {
   width: 82rem;
   height: 58rem;
+}
+
+.welcome__graffiti-img-smudges {
+  position: absolute;
+  bottom: -8rem;
+  right: 31.6rem;
+  width: 22rem;
+  height: 40rem;
+  transition: clip-path 0.5s linear;
+  clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+
+  &--visible {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.welcome__header-hidden span {
+  display: inline-block;
+  opacity: 0;
+}
+
+.welcome__header-visible span:nth-child(1) {
+  display: inline-block;
+  opacity: 1;
+  animation: zoomIn 1s forwards;
+}
+
+.welcome__header-visible span:nth-child(3) {
+  display: inline-block;
+  opacity: 1;
+  animation: zoomIn 1s forwards;
 }

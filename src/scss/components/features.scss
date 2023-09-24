@@ -1,6 +1,11 @@
 @import "../variables.scss";
 
+.feature-page-wrapper {
+  height: 100vh;
+}
+
 .features-title {
+  scroll-snap-align: start;
   position: relative;
   height: 100vh;
 }
@@ -8,6 +13,11 @@
 .features-title__jelly {
   position: relative;
   height: 70vh;
+}
+
+.features-list {
+  scroll-snap-align: start;
+  scroll-snap-type: none;
 }
 
 .features-title__content {
@@ -52,6 +62,39 @@
       align-items: center;
     }
   }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.features-title__description span.animate {
+  animation: fadeInUp 0.3s forwards;
+}
+
+.features-title__description span {
+  display: inline-block;
+  opacity: 0;
+}
+
+.word-animation {
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
 }
 
 .features-title__description {
@@ -205,8 +248,6 @@
 
 .features-title__logo {
   z-index: 111;
-  //left: 20%;
-  //position: absolute;
 
   @media (max-width: $screen-medium-size) {
     & {

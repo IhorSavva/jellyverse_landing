@@ -1,4 +1,4 @@
-import graffiti from '../assets/graffity.svg';
+import graffiti from '../assets/graffiti.svg';
 import textLogo from '../assets/text_logo.svg';
 import shell_decoration from '../assets/shell_decoration.svg';
 import stone_decoration from '../assets/stone_decoration.svg';

@@ -14,23 +14,29 @@ import GetReady from "./components/features/GetReady";
 import DefiRevolution from "./components/features/DefiRevolution";
 import DefiGraffiti from "./components/DefiGraffiti";
 import WelcomeDefiGraffiti from "./components/WelcomeDefiGraffiti";
+import 'aos/dist/aos.css';
+import React, {useRef} from 'react';
+import Jellyfish from "./components/Jellyfish";
 
 function App() {
+  const appRef = useRef(null);
+
   return (
-    <div className="app">
+    <div className="app" ref={appRef}>
       <Diving/>
       <Welcome/>
-      <SecondHeader/>
-      <ThirdHeader/>
-      <WelcomeDefiGraffiti/>
-      <FeaturesTitle/>
-      <ExploreTitle/>
-      <FinanceTitle/>
-      <JellyTitle/>
+      <SecondHeader appRef={appRef}/>
+      <ThirdHeader appRef={appRef}/>
+      <WelcomeDefiGraffiti appRef={appRef}/>
+      <FeaturesTitle appRef={appRef}/>
+      <ExploreTitle appRef={appRef}/>
+      <FinanceTitle appRef={appRef}/>
+      <JellyTitle appRef={appRef}/>
       <FeaturingList/>
-      <GetReady/>
-      <DefiRevolution/>
+      <GetReady appRef={appRef}/>
+      <DefiRevolution appRef={appRef}/>
       <DefiGraffiti/>
+      {/*<Jellyfish />*/}
       <BurnEvent/>
       <Footer/>
       <TickerLine/>
