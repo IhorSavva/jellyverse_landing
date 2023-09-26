@@ -1,4 +1,3 @@
-import jellyfish from '../assets/jellyfish.svg';
 import IconLink from "./common/IconLink";
 import Toolbar from "./Toolbar";
 
@@ -21,7 +20,6 @@ function Welcome() {
           <br/>
           <span>to defi 3.0</span>
         </div>
-        <img src={jellyfish} className="welcome__jelly" alt="jelly"/>
       </div>
     </div>
   );

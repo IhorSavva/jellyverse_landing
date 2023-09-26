@@ -1,4 +1,3 @@
-import jellyfish from '../../assets/jellyfish.svg';
 import React, { useRef, useState, useEffect } from 'react';
 
 
@@ -39,7 +38,6 @@ function SecondHeader({appRef}) {
         >
           <span>let's drive</span>
         </div>
-        <img src={jellyfish} className="welcome__jelly welcome__jelly--left" alt="jelly"/>
       </div>
     </div>
   );

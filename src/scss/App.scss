@@ -12,6 +12,10 @@
   background-color: $col-bg;
 }
 
+body, html {
+  overflow-x: hidden;
+}
+
 html {
   font-size: 10px;
 }
