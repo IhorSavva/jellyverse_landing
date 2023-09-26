@@ -6,19 +6,19 @@ function JellyAnimation({ isWelcomeVisible, isThirdHeaderVisible, isFinanceTitle
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isFourthAnimationPlaying, setIsFourthAnimationPlaying] = useState(false);
 
-  const imagesContext1 = require.context('../../assets/jellyfish/first_idle', false, /\.(png|jpe?g)$/);
+  const imagesContext1 = require.context('../../../public/jellyfish/first_idle', false, /\.(png|jpe?g)$/);
   const images1 = imagesContext1.keys().map(imagesContext1);
 
-  const imagesContext2 = require.context('../../assets/jellyfish/transition', false, /\.(png|jpe?g)$/);
+  const imagesContext2 = require.context('../../../public/jellyfish/transition', false, /\.(png|jpe?g)$/);
   const images2 = imagesContext2.keys().map(imagesContext2);
 
-  const imagesContext3 = require.context('../../assets/jellyfish/second_idle', false, /\.(png|jpe?g)$/);
+  const imagesContext3 = require.context('../../../public/jellyfish/second_idle', false, /\.(png|jpe?g)$/);
   const images3 = imagesContext3.keys().map(imagesContext3);
 
-  const imagesContext4 = require.context('../../assets/jellyfish/second_transition', false, /\.(png|jpe?g)$/);
+  const imagesContext4 = require.context('../../../public/jellyfish/second_transition', false, /\.(png|jpe?g)$/);
   const images4 = imagesContext4.keys().map(imagesContext4);
 
-  const imagesContext5 = require.context('../../assets/jellyfish/third_idle', false, /\.(png|jpe?g)$/);
+  const imagesContext5 = require.context('../../../public/jellyfish/third_idle', false, /\.(png|jpe?g)$/);
   const images5 = imagesContext5.keys().map(imagesContext5);
 
   useEffect(() => {
