@@ -1,71 +1,67 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import firstIdleGif from '../../assets/jellyfish_gif/first_idle.gif';
+import firstTransitionGif from '../../assets/jellyfish_gif/first_transition_single.gif';
+import secondIdleGif from '../../assets/jellyfish_gif/second_idle.gif';
+import secondTransitionGif from '../../assets/jellyfish_gif/second_transition_single.gif';
+import thirdIdleGif from '../../assets/jellyfish_gif/third_idle.gif';
 
-function JellyAnimation({ isWelcomeVisible, isThirdHeaderVisible, isFinanceTitleVisible, isJellyTitleVisible }) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [currentImages, setCurrentImages] = useState([]);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isFourthAnimationPlaying, setIsFourthAnimationPlaying] = useState(false);
+function JellyAnimation({ isWelcomeVisible, isThirdHeaderVisible }) {
+    const [showSecondIdle, setShowSecondIdle] = useState(false);
+    const [showThirdIdle, setShowThirdIdle] = useState(false);
 
-  const imagesContext1 = require.context('../../assets/jellyfish/first_idle', false, /\.(png|jpe?g)$/);
-  const images1 = imagesContext1.keys().map(imagesContext1);
-
-  const imagesContext2 = require.context('../../assets/jellyfish/transition', false, /\.(png|jpe?g)$/);
-  const images2 = imagesContext2.keys().map(imagesContext2);
-
-  const imagesContext3 = require.context('../../assets/jellyfish/second_idle', false, /\.(png|jpe?g)$/);
-  const images3 = imagesContext3.keys().map(imagesContext3);
-
-  const imagesContext4 = require.context('../../assets/jellyfish/second_transition', false, /\.(png|jpe?g)$/);
-  const images4 = imagesContext4.keys().map(imagesContext4);
-
-  const imagesContext5 = require.context('../../assets/jellyfish/third_idle', false, /\.(png|jpe?g)$/);
-  const images5 = imagesContext5.keys().map(imagesContext5);
-
-  useEffect(() => {
-    setCurrentImages(isWelcomeVisible ? images1 : images2);
-    if (!isWelcomeVisible) setIsTransitioning(true);
-  }, [isWelcomeVisible]);
-
-  useEffect(() => {
-    if (isThirdHeaderVisible && !isFourthAnimationPlaying) {
-      setIsFourthAnimationPlaying(true);
-      setCurrentImages(images4);
-    }
-  }, [isThirdHeaderVisible]);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => {
-        if (isTransitioning && prevIndex + 1 === images2.length) {
-          setIsTransitioning(false);
-          setCurrentImages(images3);
-          return 0;
+    useEffect(() => {
+        let timeoutId;
+        if (!isWelcomeVisible) {
+            timeoutId = setTimeout(() => {
+                setShowSecondIdle(true);
+            }, 3000);
+        } else {
+            setShowSecondIdle(false);
         }
+        return () => clearTimeout(timeoutId);
+    }, [isWelcomeVisible]);
 
-        if (isFourthAnimationPlaying && prevIndex + 1 === images4.length) {
-          setIsFourthAnimationPlaying(false);
-          setCurrentImages(images5);
-          return 0;
+    useEffect(() => {
+        let timeoutId;
+        if (isThirdHeaderVisible) {
+            timeoutId = setTimeout(() => {
+                setShowThirdIdle(true);
+            }, 2850);
+        } else {
+            setShowThirdIdle(false);
         }
+        return () => clearTimeout(timeoutId);
+    }, [isThirdHeaderVisible]);
 
-        return (prevIndex + 1) % currentImages.length;
-      });
-    }, 35);
-
-    return () => clearInterval(intervalId);
-  }, [currentImages.length, isTransitioning, isFourthAnimationPlaying]);
-
-  let classNames = ['welcome__jelly'];
-  if (isWelcomeVisible || isThirdHeaderVisible) {
-    classNames.push('welcome__jelly-move-right')
-  } else {
-    classNames.push('welcome__jelly-move-left');
-  }
-  if (isJellyTitleVisible) {
-    classNames.push('welcome__jelly-move-hide')
-  }
-
-  return <img src={currentImages[currentImageIndex]} className={classNames.join(' ')} alt="animation" />;
+    return (
+        <>
+            <img
+                src={firstIdleGif}
+                className={`welcome__jelly ${isWelcomeVisible ? '' : 'hidden'}`}
+                alt="First Idle Animation"
+            />
+            <img
+                src={firstTransitionGif}
+                className={`welcome__jelly ${isWelcomeVisible || showSecondIdle ? 'hidden' : 'move-left'}`}
+                alt="First Transition Animation"
+            />
+            <img
+                src={secondIdleGif}
+                className={`welcome__jelly ${showSecondIdle && !isThirdHeaderVisible ? 'move-left' : 'left hidden'}`}
+                alt="Second Idle Animation"
+            />
+            <img
+                src={secondTransitionGif}
+                className={`welcome__jelly ${isThirdHeaderVisible && !showThirdIdle ? 'move-right' : 'left hidden'}`}
+                alt="Second Transition Animation"
+            />
+            <img
+                src={thirdIdleGif}
+                className={`welcome__jelly ${isThirdHeaderVisible && showThirdIdle ? 'move-right' : 'right hidden'}`}
+                alt="Second Transition Animation"
+            />
+        </>
+    );
 }
 
 export default JellyAnimation;

@@ -36,6 +36,8 @@ function App() {
         entries.forEach((entry) => {
           if (entry.target.id === 'welcome' && entry.isIntersecting) {
             setIsWelcomeVisible(true);
+            setIsThirdHeaderVisible(false);
+            setIsThirdHeaderVisible(false);
           } else if (entry.target.id === 'secondHeader' && entry.isIntersecting) {
             setIsWelcomeVisible(false);
           } else if (entry.target.id === 'thirdHeader' && entry.isIntersecting) {
