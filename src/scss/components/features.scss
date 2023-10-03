@@ -34,8 +34,6 @@
 }
 
 .features-title__description-logo {
-  position: absolute;
-  top: 1rem;
   width: 14.8rem;
   height: 2.6rem;
 }
@@ -97,8 +95,14 @@
   opacity: 0;
 }
 
+.features-title__description-img {
+  height: 4.4rem;
+  display: flex;
+  align-items: center;
+  float: left;
+}
+
 .features-title__description {
-  position: relative;
   width: 66rem;
   font-size: 2.8rem;
   line-height: 4.4rem;

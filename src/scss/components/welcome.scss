@@ -34,48 +34,6 @@
   }
 }
 
-.welcome__jelly {
-  height: 120rem;
-  position: absolute;
-  top: -14rem;
-  right: -8rem;
-
-  &--left {
-    left: 20rem;
-  }
-
-  @media (max-width: $screen-medium-size) {
-    & {
-      width: 39rem;
-      height: 55rem;
-      left: -7rem;
-      top: 8.4rem;
-    }
-  }
-}
-
-.welcome__jelly-wrapper {
-  position: relative;
-}
-
-.welcome__jelly-move-left {
-  transform: translateX(-100%);
-  transition: transform 2s ease-in-out;
-}
-
-.welcome__jelly-move-right {
-  transform: translateX(0);
-  transition: transform 2s ease-in-out;
-}
-
-.welcome__jelly-move-hide {
-  display: none;
-}
-
-.welcome__jelly-move-show {
-  display: block;
-}
-
 .welcome__links {
   margin-top: 18.6rem;
   width: 3.6rem;
@@ -102,7 +60,7 @@
 .welcome__header {
   transition: all 1s ease-out;
   width: 100%;
-  z-index: 1100;
+  z-index: 1;
   margin-top: 15rem;
   color: $col-text;
   font-size: 16.8rem;

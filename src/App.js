@@ -40,6 +40,7 @@ function App() {
             setIsWelcomeVisible(false);
           } else if (entry.target.id === 'thirdHeader' && entry.isIntersecting) {
             setIsThirdHeaderVisible(true);
+            setIsJellyTitleVisible(false);
           } else if (entry.target.id === 'jellyTitle' && entry.isIntersecting) {
             setIsJellyTitleVisible(true);
           }

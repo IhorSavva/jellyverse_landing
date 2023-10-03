@@ -55,14 +55,17 @@ function JellyAnimation({ isWelcomeVisible, isThirdHeaderVisible, isFinanceTitle
     return () => clearInterval(intervalId);
   }, [currentImages.length, isTransitioning, isFourthAnimationPlaying]);
 
-  let classNames = ['welcome__jelly'];
+  let classNames = ['jellyfish__animation'];
   if (isWelcomeVisible || isThirdHeaderVisible) {
-    classNames.push('welcome__jelly-move-right')
+    classNames.push('jellyfish__animation-move-right')
   } else {
-    classNames.push('welcome__jelly-move-left');
+    classNames.push('jellyfish__animation-move-left');
   }
+  console.log(isJellyTitleVisible);
   if (isJellyTitleVisible) {
-    classNames.push('welcome__jelly-move-hide')
+    classNames.push('jellyfish__animation-move-hide')
+  } else {
+    classNames.push('jellyfish__animation-move-show')
   }
 
   return <img src={currentImages[currentImageIndex]} className={classNames.join(' ')} alt="animation" />;

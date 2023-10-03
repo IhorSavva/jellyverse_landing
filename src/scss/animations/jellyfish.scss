@@ -1,0 +1,45 @@
+@import "../variables.scss";
+
+.jellyfish__animation {
+  z-index: 0;
+  overflow: hidden;
+  height: 120rem;
+  position: absolute;
+  top: -14rem;
+  right: -8rem;
+
+  &--left {
+    left: 20rem;
+  }
+
+  @media (max-width: $screen-medium-size) {
+    & {
+      width: 39rem;
+      height: 55rem;
+      left: -7rem;
+      top: 8.4rem;
+    }
+  }
+}
+
+.jellyfish__animation-wrapper {
+  position: relative;
+}
+
+.jellyfish__animation-move-left {
+  transform: translateX(-100%);
+  transition: transform 2s ease-in-out;
+}
+
+.jellyfish__animation-move-right {
+  transform: translateX(0);
+  transition: transform 2s ease-in-out;
+}
+
+.jellyfish__animation-move-hide {
+  z-index: -1;
+}
+
+.jellyfish__animation-move-show {
+  z-index: 0;
+}
