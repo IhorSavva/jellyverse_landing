@@ -61,7 +61,6 @@ function JellyAnimation({ isWelcomeVisible, isThirdHeaderVisible, isFinanceTitle
   } else {
     classNames.push('jellyfish__animation-move-left');
   }
-  console.log(isJellyTitleVisible);
   if (isJellyTitleVisible) {
     classNames.push('jellyfish__animation-move-hide')
   } else {
