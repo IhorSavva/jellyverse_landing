@@ -300,3 +300,49 @@
   left: 0;
   clip-path: ellipse(60% 100% at 50% 0%);
 }
+
+.defi-graffiti {
+  position: relative;
+  padding: 1.8rem 12.8rem 0 12rem;
+  height: 100vh;
+  background-color: $col-bg;
+
+  @media (max-width: $screen-medium-size) {
+    & {
+      padding: 0;
+    }
+  }
+}
+
+.defi-graffiti__graffiti {
+  width: 100%;
+  height: 100%;
+}
+
+.defi-graffiti__wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.defi-graffiti__img-wrapper {
+  position: absolute;
+  top: 6rem;
+  width: 119rem;
+  height: 79.8rem;
+}
+
+
+.defi-graffiti__graffiti-img-smudges {
+  position: absolute;
+  top: 63%;
+  right: 18rem;
+  width: 70rem;
+  height: 50rem;
+  transition: clip-path 1s ease-out;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+  &--visible {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
