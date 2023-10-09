@@ -16,6 +16,7 @@ import DefiGraffiti from "./components/DefiGraffiti";
 import WelcomeDefiGraffiti from "./components/WelcomeDefiGraffiti";
 import React, {useRef, useState, useEffect} from 'react';
 import JellyfishAnimation from "./components/jellyfish/JellyfishAnimation";
+import JellyfishBottom from "./components/jellyfish/JellyfishBottom";
 
 function App() {
     const appRef = useRef(null);
@@ -24,10 +25,18 @@ function App() {
     const thirdHeaderRef = useRef(null);
     const financeRef = useRef(null);
     const jellyTitle = useRef(null);
+    const featuringRef = useRef(null);
+    const getReadyRef = useRef(null);
+    const defiRevolutionRef = useRef(null);
+    const defiGraffitiRef = useRef(null);
     const [isWelcomeVisible, setIsWelcomeVisible] = useState(true);
     const [isThirdHeaderVisible, setIsThirdHeaderVisible] = useState(false);
     const [isFinanceTitleVisible, setIsFinanceTitleVisible] = useState(false);
     const [isJellyTitleVisible, setIsJellyTitleVisible] = useState(false);
+    const [isGetReady, setIsGetReady] = useState(false);
+    const [isFeaturing, setIsFeaturing] = useState(false);
+    const [isDefiRevolution, setIsDefiRevolution] = useState(false);
+    const [isDefiGraffiti, setIsDefiGraffiti] = useState(false);
 
 
     useEffect(() => {
@@ -43,6 +52,26 @@ function App() {
                         setIsJellyTitleVisible(false);
                     } else if (entry.target.id === 'jellyTitle' && entry.isIntersecting) {
                         setIsJellyTitleVisible(true);
+                    } else if (entry.target.id === 'featuring' && entry.isIntersecting) {
+                        setIsFeaturing(true);
+                        setIsGetReady(false);
+                        setIsDefiRevolution(false);
+                        setIsDefiGraffiti(false);
+                    } else if (entry.target.id === 'get-ready' && entry.isIntersecting) {
+                        setIsFeaturing(false);
+                        setIsDefiRevolution(false);
+                        setIsDefiGraffiti(false);
+                        setIsGetReady(true);
+                    } else if (entry.target.id === 'defi-revolution' && entry.isIntersecting) {
+                        setIsFeaturing(false);
+                        setIsGetReady(false);
+                        setIsDefiGraffiti(false);
+                        setIsDefiRevolution(true);
+                    } else if (entry.target.id === 'defi-graffiti' && entry.isIntersecting) {
+                        setIsFeaturing(false);
+                        setIsGetReady(false);
+                        setIsDefiRevolution(false);
+                        setIsDefiGraffiti(true);
                     }
                 });
             },
@@ -56,6 +85,10 @@ function App() {
         if (thirdHeaderRef.current) observer.observe(thirdHeaderRef.current);
         if (financeRef.current) observer.observe(financeRef.current);
         if (jellyTitle.current) observer.observe(jellyTitle.current);
+        if (featuringRef.current) observer.observe(featuringRef.current);
+        if (getReadyRef.current) observer.observe(getReadyRef.current);
+        if (defiRevolutionRef.current) observer.observe(defiRevolutionRef.current);
+        if (defiGraffitiRef.current) observer.observe(defiGraffitiRef.current);
 
         return () => {
             if (welcomeRef.current) observer.unobserve(welcomeRef.current);
@@ -63,6 +96,10 @@ function App() {
             if (thirdHeaderRef.current) observer.unobserve(thirdHeaderRef.current);
             if (financeRef.current) observer.unobserve(financeRef.current);
             if (jellyTitle.current) observer.unobserve(jellyTitle.current);
+            if (featuringRef.current) observer.unobserve(featuringRef.current);
+            if (getReadyRef.current) observer.unobserve(getReadyRef.current);
+            if (defiRevolutionRef.current) observer.unobserve(defiRevolutionRef.current);
+            if (defiGraffitiRef.current) observer.unobserve(defiGraffitiRef.current);
         };
     }, []);
 
@@ -70,6 +107,7 @@ function App() {
         <div className="app" ref={appRef}>
             <Diving/>
             <JellyfishAnimation
+                isBottom={false}
                 isWelcomeVisible={isWelcomeVisible}
                 isThirdHeaderVisible={isThirdHeaderVisible}
                 isFinanceTitleVisible={isFinanceTitleVisible}
@@ -93,16 +131,32 @@ function App() {
             <div ref={jellyTitle} id="jellyTitle">
                 <JellyTitle appRef={appRef}/>
             </div>
-            <div className="featuring-list">
+            <div
+                ref={featuringRef}
+                id="featuring"
+                className="featuring-list"
+            >
                 <FeaturingList/>
             </div>
-            <GetReady appRef={appRef}/>
-            <DefiRevolution appRef={appRef}/>
-            <DefiGraffiti appRef={appRef}/>
-            {/*<Jellyfish />*/}
+            <div ref={getReadyRef} id="get-ready">
+                <GetReady appRef={appRef}/>
+            </div>
+            <div ref={defiRevolutionRef} id="defi-revolution">
+                <DefiRevolution appRef={appRef}/>
+            </div>
+            <div ref={defiGraffitiRef} id="defi-graffiti">
+                <DefiGraffiti appRef={appRef}/>
+            </div>
+            <JellyfishBottom
+                isBottom={true}
+                isFeaturing={isFeaturing}
+                isGetReady={isGetReady}
+                isRevolution={isDefiRevolution}
+                isGraffiti={isDefiGraffiti}
+            />
             <BurnEvent/>
             <Footer/>
-            {/*<TickerLine/>*/}
+            <TickerLine/>
         </div>
     );
 }

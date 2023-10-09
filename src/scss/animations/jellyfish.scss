@@ -22,8 +22,46 @@
   }
 }
 
+.jellyfish-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+
 .jellyfish__animation-wrapper {
-  position: relative;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+
+  &>img {
+    width: 70rem;
+  }
+
+  &--featuring {
+    top: 100%;
+  }
+
+  &--get-ready {
+    top: 55%;
+    animation: moveFromBottomFirst 1s ease-out forwards;
+    animation-fill-mode: forwards;
+  }
+
+  &--revolution {
+    top: 30%;
+    animation: moveFromBottomSecond 1s ease-out forwards;
+    animation-fill-mode: forwards;
+  }
+
+  &--graffiti {
+    top: -10%;
+    animation: moveFromBottomThird 1s ease-out forwards;
+    animation-fill-mode: forwards;
+  }
 }
 
 .jellyfish__animation-move-left {
@@ -42,4 +80,31 @@
 
 .jellyfish__animation-move-show {
   z-index: 0;
+}
+
+@keyframes moveFromBottomFirst {
+  0% {
+    top: 100%;
+  }
+  100% {
+    top: 55%;
+  }
+}
+
+@keyframes moveFromBottomSecond {
+  0% {
+    top: 55%;
+  }
+  100% {
+    top: 30%;
+  }
+}
+
+@keyframes moveFromBottomThird {
+  0% {
+    top: 30%;
+  }
+  100% {
+    top: -10%;
+  }
 }
