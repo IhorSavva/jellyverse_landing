@@ -15,8 +15,8 @@ import DefiRevolution from "./components/features/DefiRevolution";
 import DefiGraffiti from "./components/DefiGraffiti";
 import WelcomeDefiGraffiti from "./components/WelcomeDefiGraffiti";
 import React, {useRef, useState, useEffect} from 'react';
-import JellyfishAnimation from "./components/jellyfish/JellyfishAnimation";
 import JellyfishBottom from "./components/jellyfish/JellyfishBottom";
+import JellyfishVideo from "./components/jellyfish/JellyfishVideo";
 
 function App() {
     const appRef = useRef(null);
@@ -29,7 +29,9 @@ function App() {
     const getReadyRef = useRef(null);
     const defiRevolutionRef = useRef(null);
     const defiGraffitiRef = useRef(null);
+
     const [isWelcomeVisible, setIsWelcomeVisible] = useState(true);
+    const [isSecondHeaderVisible, setIsSecondHeaderVisible] = useState(false);
     const [isThirdHeaderVisible, setIsThirdHeaderVisible] = useState(false);
     const [isFinanceTitleVisible, setIsFinanceTitleVisible] = useState(false);
     const [isJellyTitleVisible, setIsJellyTitleVisible] = useState(false);
@@ -45,12 +47,17 @@ function App() {
                 entries.forEach((entry) => {
                     if (entry.target.id === 'welcome' && entry.isIntersecting) {
                         setIsWelcomeVisible(true);
+                        setIsSecondHeaderVisible(false);
                     } else if (entry.target.id === 'secondHeader' && entry.isIntersecting) {
                         setIsWelcomeVisible(false);
+                        setIsSecondHeaderVisible(true);
+                        setIsThirdHeaderVisible(false);
                     } else if (entry.target.id === 'thirdHeader' && entry.isIntersecting) {
                         setIsThirdHeaderVisible(true);
+                        setIsSecondHeaderVisible(false);
                         setIsJellyTitleVisible(false);
                     } else if (entry.target.id === 'jellyTitle' && entry.isIntersecting) {
+                        setIsThirdHeaderVisible(false);
                         setIsJellyTitleVisible(true);
                     } else if (entry.target.id === 'featuring' && entry.isIntersecting) {
                         setIsFeaturing(true);
@@ -106,12 +113,10 @@ function App() {
     return (
         <div className="app" ref={appRef}>
             <Diving/>
-            <JellyfishAnimation
-                isBottom={false}
-                isWelcomeVisible={isWelcomeVisible}
-                isThirdHeaderVisible={isThirdHeaderVisible}
-                isFinanceTitleVisible={isFinanceTitleVisible}
-                isJellyTitleVisible={isJellyTitleVisible}
+            <JellyfishVideo
+                isFirstIdle={isWelcomeVisible}
+                isThirdIdle={isSecondHeaderVisible}
+                isFifthIdle={isThirdHeaderVisible}
             />
             <div ref={welcomeRef} id="welcome">
                 <Welcome/>

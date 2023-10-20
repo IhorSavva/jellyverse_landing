@@ -27,20 +27,13 @@ body {
 }
 
 .app {
-  overflow-y: auto;
   overflow-x: hidden;
   height: 100vh;
-
-  scroll-snap-type: y mandatory;
-}
-
-.app > * {
-  scroll-snap-align: start;
 }
 
 .app__wrapper {
   margin: 0 auto;
-  max-width: 144rem;
+  max-width: $app-wrapper-width;
   width: 100%;
 }
 

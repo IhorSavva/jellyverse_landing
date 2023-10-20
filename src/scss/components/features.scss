@@ -9,7 +9,6 @@
 }
 
 .features-title {
-  scroll-snap-align: start;
   position: relative;
   height: 100vh;
 }
@@ -158,6 +157,7 @@
 
 .features-title__img-armor-wrapper {
   transform: rotate(-138deg);
+  overflow: hidden;
   position: absolute;
   top: 18rem;
   right: -28rem;
