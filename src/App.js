@@ -1,10 +1,7 @@
-import Welcome from "./components/Welcome";
 import TickerLine from "./components/TickerLine";
 import BurnEvent from "./components/BurnEvent";
 import Footer from "./components/Footer";
 import Diving from "./components/Diving";
-import SecondHeader from "./components/welcome/SecondHeader";
-import ThirdHeader from "./components/welcome/ThirdHeader";
 import FeaturesTitle from "./components/features/FeaturesTitle";
 import ExploreTitle from "./components/features/ExploreTitle";
 import FinanceTitle from "./components/features/FinanceTitle";
@@ -17,6 +14,8 @@ import WelcomeDefiGraffiti from "./components/WelcomeDefiGraffiti";
 import React, {useRef, useState, useEffect} from 'react';
 import JellyfishBottom from "./components/jellyfish/JellyfishBottom";
 import JellyfishVideo from "./components/jellyfish/JellyfishVideo";
+import HeaderWelcome from "./components/header/HeaderWelcome";
+import HeaderDive from "./components/header/HeaderDive";
 
 function App() {
     const appRef = useRef(null);
@@ -45,10 +44,10 @@ function App() {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (entry.target.id === 'welcome' && entry.isIntersecting) {
+                    if (entry.target.id === 'headerWelcome' && entry.isIntersecting) {
                         setIsWelcomeVisible(true);
                         setIsSecondHeaderVisible(false);
-                    } else if (entry.target.id === 'secondHeader' && entry.isIntersecting) {
+                    } else if (entry.target.id === 'headerDive' && entry.isIntersecting) {
                         setIsWelcomeVisible(false);
                         setIsSecondHeaderVisible(true);
                         setIsThirdHeaderVisible(false);
@@ -118,14 +117,17 @@ function App() {
                 isThirdIdle={isSecondHeaderVisible}
                 isFifthIdle={isThirdHeaderVisible}
             />
-            <div ref={welcomeRef} id="welcome">
-                <Welcome/>
+            <div
+                ref={welcomeRef}
+                id="headerWelcome"
+            >
+                <HeaderWelcome />
             </div>
-            <div ref={secondHeaderRef} id="secondHeader">
-                <SecondHeader appRef={appRef}/>
-            </div>
-            <div ref={thirdHeaderRef} id="thirdHeader">
-                <ThirdHeader appRef={appRef}/>
+            <div
+                ref={secondHeaderRef}
+                id="headerDive"
+            >
+                <HeaderDive appRef={appRef}/>
             </div>
             <WelcomeDefiGraffiti appRef={appRef}/>
             <FeaturesTitle appRef={appRef}/>
