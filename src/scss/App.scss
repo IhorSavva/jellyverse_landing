@@ -9,12 +9,7 @@
 #root {
   position: relative;
   width: 100vw;
-  overflow: hidden;
   background-color: $col-bg;
-}
-
-body, html {
-  overflow-x: hidden;
 }
 
 html {
@@ -26,10 +21,6 @@ body {
   justify-content: center;
 }
 
-.app {
-  overflow-x: hidden;
-  height: 100vh;
-}
 
 .app__wrapper {
   margin: 0 auto;

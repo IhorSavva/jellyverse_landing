@@ -16,8 +16,12 @@ import JellyfishBottom from "./components/jellyfish/JellyfishBottom";
 import JellyfishVideo from "./components/jellyfish/JellyfishVideo";
 import HeaderWelcome from "./components/header/HeaderWelcome";
 import HeaderDive from "./components/header/HeaderDive";
+import { Scrollbar } from "smooth-scrollbar-react";
+import { Scrollbar as BaseScrollbar } from "smooth-scrollbar/scrollbar";
 
 function App() {
+    const scrollbar = useRef(BaseScrollbar);
+
     const appRef = useRef(null);
     const welcomeRef = useRef(null);
     const secondHeaderRef = useRef(null);
@@ -38,7 +42,6 @@ function App() {
     const [isFeaturing, setIsFeaturing] = useState(false);
     const [isDefiRevolution, setIsDefiRevolution] = useState(false);
     const [isDefiGraffiti, setIsDefiGraffiti] = useState(false);
-
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -110,60 +113,74 @@ function App() {
     }, []);
 
     return (
-        <div className="app" ref={appRef}>
-            <Diving/>
-            <JellyfishVideo
-                isFirstIdle={isWelcomeVisible}
-                isThirdIdle={isSecondHeaderVisible}
-                isFifthIdle={isThirdHeaderVisible}
-            />
-            <div
-                ref={welcomeRef}
-                id="headerWelcome"
+        <div
+            className="app"
+            ref={appRef}
+            style={{ maxHeight: '100vh', display: "flex" }}
+        >
+            <Scrollbar
+                className="app__scrollbar"
+                ref={scrollbar}
+                plugins={{
+                    overscroll: {
+                        effect: "glow",
+                    }
+                }}
             >
-                <HeaderWelcome />
-            </div>
-            <div
-                ref={secondHeaderRef}
-                id="headerDive"
-            >
-                <HeaderDive appRef={appRef}/>
-            </div>
-            <WelcomeDefiGraffiti appRef={appRef}/>
-            <FeaturesTitle appRef={appRef}/>
-            <ExploreTitle appRef={appRef}/>
-            <div ref={financeRef} id="financeTitle">
-                <FinanceTitle appRef={appRef}/>
-            </div>
-            <div ref={jellyTitle} id="jellyTitle">
-                <JellyTitle appRef={appRef}/>
-            </div>
-            <div
-                ref={featuringRef}
-                id="featuring"
-                className="featuring-list"
-            >
-                <FeaturingList/>
-            </div>
-            <div ref={getReadyRef} id="get-ready">
-                <GetReady appRef={appRef}/>
-            </div>
-            <div ref={defiRevolutionRef} id="defi-revolution">
-                <DefiRevolution appRef={appRef}/>
-            </div>
-            <div ref={defiGraffitiRef} id="defi-graffiti">
-                <DefiGraffiti appRef={appRef}/>
-            </div>
-            <JellyfishBottom
-                isBottom={true}
-                isFeaturing={isFeaturing}
-                isGetReady={isGetReady}
-                isRevolution={isDefiRevolution}
-                isGraffiti={isDefiGraffiti}
-            />
-            <BurnEvent/>
-            <Footer/>
-            <TickerLine/>
+                <Diving/>
+                <JellyfishVideo
+                    isFirstIdle={isWelcomeVisible}
+                    isThirdIdle={isSecondHeaderVisible}
+                    isFifthIdle={isThirdHeaderVisible}
+                />
+                <div
+                    ref={welcomeRef}
+                    id="headerWelcome"
+                >
+                    <HeaderWelcome />
+                </div>
+                <div
+                    ref={secondHeaderRef}
+                    id="headerDive"
+                >
+                    <HeaderDive appRef={appRef}/>
+                </div>
+                <WelcomeDefiGraffiti appRef={appRef}/>
+                <FeaturesTitle appRef={appRef}/>
+                <ExploreTitle appRef={appRef}/>
+                <div ref={financeRef} id="financeTitle">
+                    <FinanceTitle appRef={appRef}/>
+                </div>
+                <div ref={jellyTitle} id="jellyTitle">
+                    <JellyTitle appRef={appRef}/>
+                </div>
+                <div
+                    ref={featuringRef}
+                    id="featuring"
+                    className="featuring-list"
+                >
+                    <FeaturingList/>
+                </div>
+                <div ref={getReadyRef} id="get-ready">
+                    <GetReady appRef={appRef}/>
+                </div>
+                <div ref={defiRevolutionRef} id="defi-revolution">
+                    <DefiRevolution appRef={appRef}/>
+                </div>
+                <div ref={defiGraffitiRef} id="defi-graffiti">
+                    <DefiGraffiti appRef={appRef}/>
+                </div>
+                <JellyfishBottom
+                    isBottom={true}
+                    isFeaturing={isFeaturing}
+                    isGetReady={isGetReady}
+                    isRevolution={isDefiRevolution}
+                    isGraffiti={isDefiGraffiti}
+                />
+                <BurnEvent/>
+                <Footer/>
+                <TickerLine/>
+            </Scrollbar>
         </div>
     );
 }
