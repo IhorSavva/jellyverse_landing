@@ -84,15 +84,14 @@
 
 .jellyfish__background-video {
   position: absolute;
-  top: 0;
-  height: 120rem;
-  z-index: 1;
+  top: -10rem;
+  height: 130rem;
   overflow: hidden;
   transition: right 0.5s ease, left 0.5s ease;
 
   &--right {
 
-    transform: translateX(100%);
+    transform: translateX(calc(100vw / 2));
     transition: transform 1.15s ease-in-out;
 
     //right: calc((100vw - $app-wrapper-width) / 2);
@@ -106,6 +105,11 @@
     //left: calc((100vw - $app-wrapper-width) / 2);
     //right: auto;
   }
+}
+
+.jellyfish__video-container {
+  z-index: -10;
+  position: fixed;
 }
 
 .jellyfish__video-container video {

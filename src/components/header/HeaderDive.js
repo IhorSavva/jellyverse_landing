@@ -1,44 +1,39 @@
 import React, { useRef, useState, useEffect } from 'react';
 
-
-function HeaderDive({appRef}) {
-    const [hasAnimated, setHasAnimated] = useState(false);
+function HeaderDive({ appRef }) {
     const headerRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
-    const checkVisibility = () => {
-        if (!hasAnimated && headerRef.current && appRef.current) {
-            const rect = headerRef.current.getBoundingClientRect();
-            const appRect = appRef.current.getBoundingClientRect();
-            const isElementVisible = (rect.top >= appRect.top) && (rect.bottom <= appRect.bottom);
-            if (isElementVisible) {
-                setIsVisible(true);
-                setHasAnimated(true);
-            }
-        }
-    };
-
     useEffect(() => {
-        if (appRef.current) {
-            appRef.current.addEventListener('scroll', checkVisibility);
-            return () => {
-                appRef.current.removeEventListener('scroll', checkVisibility);
-            };
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible(true);
+                    }
+                });
+            },
+            { threshold: 0.6 }
+        );
+
+        if (headerRef.current) {
+            observer.observe(headerRef.current);
         }
+
+        return () => {
+            if (headerRef.current) {
+                observer.unobserve(headerRef.current);
+            }
+        };
     }, []);
 
     return (
-        <div className="header__container">
-            <div
-                className="header_titles"
-            >
-                <div
-                    ref={headerRef}
-                    className={`header__title ${isVisible ? 'welcome__header-visible' : 'welcome__header-hidden'}`}
-                >
-                    <span>let's drive</span><br/>
-                    <span>into</span><br/>
-                    <span>the jellyverse</span>
+        <div className="header__container app__wrapper" ref={headerRef}>
+            <div className="header_titles">
+                <div className="header__title header__title--margin-top">
+                    <span className={isVisible ? 'visible' : ''}>let's dive</span><br />
+                    <span className={isVisible ? 'visible' : ''} style={{ animationDelay: '0.2s' }}>into</span><br />
+                    <span className={isVisible ? 'visible' : ''} style={{ animationDelay: '0.4s' }}>the jellyverse</span>
                 </div>
             </div>
         </div>

@@ -1,23 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react';
 import stone_decoration from "../../assets/stone_decoration.svg";
 
-function ExploreTitle({appRef}) {
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const headerRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
+function ExploreTitle({appRef, isVisible}) {
+  const headerTitleRef = useRef(null);
+  const [headerTitleSize, setHeaderTitleSize] = useState({ width: 0, height: 0 });
   const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  const checkVisibility = () => {
-    if (!hasAnimated && headerRef.current && appRef.current) {
-      const rect = headerRef.current.getBoundingClientRect();
-      const appRect = appRef.current.getBoundingClientRect();
-      const isElementVisible = (rect.top >= appRect.top) && (rect.bottom <= appRect.bottom);
-      if (isElementVisible) {
-        setIsVisible(true);
-        setHasAnimated(true);
-      }
-    }
-  };
 
   useEffect(() => {
     const moveRandomly = () => {
@@ -28,29 +15,32 @@ function ExploreTitle({appRef}) {
 
     const intervalId = setInterval(moveRandomly, 1000);
 
-    if (appRef.current) {
-      appRef.current.addEventListener('scroll', checkVisibility);
-    }
-
     return () => {
       clearInterval(intervalId);
-
-      if (appRef.current) {
-        appRef.current.addEventListener('scroll', checkVisibility);
-      }
     }
   }, []);
+
+  useEffect(() => {
+    if (headerTitleRef.current) {
+      const { offsetWidth, offsetHeight } = headerTitleRef.current;
+      setHeaderTitleSize({ width: offsetWidth, height: offsetHeight });
+    }
+  }, [isVisible, headerTitleRef.current]);
+
   return (
     <div className="features-title">
-      <div className="features-title__content">
+      <div className="features-title__content features-title__content--padding">
         <div className="features-title__wrapper app__wrapper">
-          <div
-            ref={headerRef}
-            className={`features-title__phrase ${isVisible ? 'welcome__header-visible' : 'welcome__header-hidden'}`}
-          >
-            <span>explore</span>
-            <br/>
-            <span>a see</span>
+          <div className="header_titles">
+            <div
+                ref={headerTitleRef}
+                className="header__title"
+            >
+              <span className={isVisible ? 'visible' : ''}>explore</span><br />
+              <span className={isVisible ? 'visible' : ''} style={{ animationDelay: '0.2s' }}>a see</span><br />
+              <span className={isVisible ? 'visible' : ''} style={{ animationDelay: '0.4s' }}>of financial</span><br />
+              <span className={isVisible ? 'visible' : ''} style={{ animationDelay: '0.6s' }}>opportunities</span><br />
+            </div>
           </div>
 
           <div className="features-title__img-stone-wrapper">

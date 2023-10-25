@@ -1,21 +1,15 @@
 import first_idle from "../../assets/video/1_idle_1.webm";
 import third_idle from "../../assets/video/3_idle_2.webm";
-import fifth_idle from "../../assets/video/5_idle_3.webm";
 import first_transition from "../../assets/video/2_transition_1.webm";
-import first_transition_mov from "../../assets/video/2_transition_1.mov";
-import first_transition_mp4 from "../../assets/video/2_transition_1.mp4";
-import second_transition from "../../assets/video/4_transition_2.webm";
 import {useEffect, useRef, useState} from "react";
 
-function JellyfishVideo({isFirstIdle, isThirdIdle, isFifthIdle}) {
+function JellyfishVideo({isFirstIdle, isThirdIdle, top}) {
     const firstTransitionVideoRef = useRef();
 
     useEffect(() => {
-        // console.log("isFirstIdle:", isFirstIdle);
-        // console.log("isThirdIdle:", isThirdIdle);
-        // console.log("isFifthIdle:", isFifthIdle);
-        console.log("isShowTransition:", isShowTransition);
-    }, [isFirstIdle, isThirdIdle, isFifthIdle]);
+        console.log("isFirstIdle:", isFirstIdle);
+        console.log("isThirdIdle:", isThirdIdle);
+    }, [isFirstIdle, isThirdIdle]);
 
     const classes = ['jellyfish__background-video'];
 
@@ -54,17 +48,16 @@ function JellyfishVideo({isFirstIdle, isThirdIdle, isFifthIdle}) {
     }, [isShowTransition]);
 
     useEffect(() => {
-        if (isFirstIdle || isFifthIdle) {
+        if (isFirstIdle) {
             setClassNames([...classes, 'jellyfish__background-video--right'])
         } else {
             setClassNames([...classes, 'jellyfish__background-video--left']);
         }
-
-    }, [isFirstIdle, isFifthIdle]);
+    }, [isFirstIdle]);
 
 
     return (
-        <div className="jellyfish__video-container">
+        <div className="jellyfish__video-container" style={{top: `${top}px`, display: `${(isFirstIdle || isThirdIdle) ? 'block' : 'none' }`}}>
             <video
                 className={`${classNames.join(' ')} ${isFirstIdle ? 'visible' : 'hidden'}`}
                 preload="auto"
@@ -73,7 +66,7 @@ function JellyfishVideo({isFirstIdle, isThirdIdle, isFifthIdle}) {
                 muted
                 playsInline
             >
-                <source src={first_idle} type="video/webm" />
+                <source src={first_idle} type="video/webm"/>
             </video>
 
             <video
@@ -83,7 +76,7 @@ function JellyfishVideo({isFirstIdle, isThirdIdle, isFifthIdle}) {
                 muted
                 playsInline
             >
-                <source src={first_transition} type="video/webm" />
+                <source src={first_transition} type="video/webm"/>
             </video>
 
             <video
@@ -94,18 +87,7 @@ function JellyfishVideo({isFirstIdle, isThirdIdle, isFifthIdle}) {
                 muted
                 playsInline
             >
-                <source src={third_idle} type="video/webm" />
-            </video>
-
-            <video
-                className={`${classNames.join(' ')} ${isFifthIdle ? 'visible' : 'hidden'}`}
-                preload="auto"
-                autoPlay
-                loop
-                muted
-                playsInline
-            >
-                <source src={fifth_idle} type="video/webm" />
+                <source src={third_idle} type="video/webm"/>
             </video>
         </div>
     );

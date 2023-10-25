@@ -4,7 +4,6 @@ import Footer from "./components/Footer";
 import Diving from "./components/Diving";
 import FeaturesTitle from "./components/features/FeaturesTitle";
 import ExploreTitle from "./components/features/ExploreTitle";
-import FinanceTitle from "./components/features/FinanceTitle";
 import JellyTitle from "./components/features/JellyTitle";
 import FeaturingList from "./components/features/FeaturingList";
 import GetReady from "./components/features/GetReady";
@@ -24,24 +23,45 @@ function App() {
 
     const appRef = useRef(null);
     const welcomeRef = useRef(null);
-    const secondHeaderRef = useRef(null);
-    const thirdHeaderRef = useRef(null);
-    const financeRef = useRef(null);
-    const jellyTitle = useRef(null);
-    const featuringRef = useRef(null);
+    const diveRef = useRef(null);
+    const jellyTitleRef = useRef(null);
+    const featuresTitleRef = useRef(null);
+    const exploreTitleRef = useRef(null);
+    const featuringListRef = useRef(null);
     const getReadyRef = useRef(null);
     const defiRevolutionRef = useRef(null);
     const defiGraffitiRef = useRef(null);
 
     const [isWelcomeVisible, setIsWelcomeVisible] = useState(true);
     const [isSecondHeaderVisible, setIsSecondHeaderVisible] = useState(false);
-    const [isThirdHeaderVisible, setIsThirdHeaderVisible] = useState(false);
-    const [isFinanceTitleVisible, setIsFinanceTitleVisible] = useState(false);
-    const [isJellyTitleVisible, setIsJellyTitleVisible] = useState(false);
     const [isGetReady, setIsGetReady] = useState(false);
+    const [isFeaturesTitle, setIsFeaturesTitle] = useState(false);
+    const [isExploreTitle, setIsExploreTitle] = useState(false);
+    const [isJellyTitle, setIsJellyTitle] = useState(false);
     const [isFeaturing, setIsFeaturing] = useState(false);
     const [isDefiRevolution, setIsDefiRevolution] = useState(false);
     const [isDefiGraffiti, setIsDefiGraffiti] = useState(false);
+    const [top, setTop] = useState(0);
+    const [limit, setLimit] = useState(0);
+    const [backgroundPosition, setBackgroundPosition] = useState(100);
+
+    function onSmoothScroll(e) {
+        setTop((prevTop) => {
+
+            const newTop = e.offset.y;
+            if (newTop !== prevTop) {
+            }
+            return newTop;
+        });
+        setLimit(e.limit.y);
+    }
+
+    useEffect(() => {
+        if (isFeaturesTitle) {
+            const newBackgroundPosition = 100 - (top / limit * 100);
+            setBackgroundPosition(newBackgroundPosition);
+        }
+    }, [top, isFeaturesTitle, limit]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -51,61 +71,46 @@ function App() {
                         setIsWelcomeVisible(true);
                         setIsSecondHeaderVisible(false);
                     } else if (entry.target.id === 'headerDive' && entry.isIntersecting) {
-                        setIsWelcomeVisible(false);
                         setIsSecondHeaderVisible(true);
-                        setIsThirdHeaderVisible(false);
-                    } else if (entry.target.id === 'thirdHeader' && entry.isIntersecting) {
-                        setIsThirdHeaderVisible(true);
-                        setIsSecondHeaderVisible(false);
-                        setIsJellyTitleVisible(false);
+                        setIsWelcomeVisible(false);
+                    } else if (entry.target.id === 'featuresTitle' && entry.isIntersecting) {
+                        setBackgroundPosition(0);
+                        setIsFeaturesTitle(true);
+                        if (isJellyTitle) {
+                            setIsSecondHeaderVisible(true);
+                        }
                     } else if (entry.target.id === 'jellyTitle' && entry.isIntersecting) {
-                        setIsThirdHeaderVisible(false);
-                        setIsJellyTitleVisible(true);
-                    } else if (entry.target.id === 'featuring' && entry.isIntersecting) {
-                        setIsFeaturing(true);
-                        setIsGetReady(false);
-                        setIsDefiRevolution(false);
-                        setIsDefiGraffiti(false);
-                    } else if (entry.target.id === 'get-ready' && entry.isIntersecting) {
-                        setIsFeaturing(false);
-                        setIsDefiRevolution(false);
-                        setIsDefiGraffiti(false);
-                        setIsGetReady(true);
-                    } else if (entry.target.id === 'defi-revolution' && entry.isIntersecting) {
-                        setIsFeaturing(false);
-                        setIsGetReady(false);
-                        setIsDefiGraffiti(false);
+                        setIsJellyTitle(true);
+                        setIsSecondHeaderVisible(false);
+                    } else if (entry.target.id === 'exploreTitle' && entry.isIntersecting) {
+                        setIsExploreTitle(true);
+                    } else if (entry.target.id === 'defiRevolution' && entry.isIntersecting) {
                         setIsDefiRevolution(true);
-                    } else if (entry.target.id === 'defi-graffiti' && entry.isIntersecting) {
-                        setIsFeaturing(false);
-                        setIsGetReady(false);
-                        setIsDefiRevolution(false);
-                        setIsDefiGraffiti(true);
                     }
                 });
             },
             {
-                threshold: 0.5,
+                threshold: 0.6,
             }
         );
 
         if (welcomeRef.current) observer.observe(welcomeRef.current);
-        if (secondHeaderRef.current) observer.observe(secondHeaderRef.current);
-        if (thirdHeaderRef.current) observer.observe(thirdHeaderRef.current);
-        if (financeRef.current) observer.observe(financeRef.current);
-        if (jellyTitle.current) observer.observe(jellyTitle.current);
-        if (featuringRef.current) observer.observe(featuringRef.current);
+        if (diveRef.current) observer.observe(diveRef.current);
+        if (jellyTitleRef.current) observer.observe(jellyTitleRef.current);
+        if (featuresTitleRef.current) observer.observe(featuresTitleRef.current);
+        if (exploreTitleRef.current) observer.observe(exploreTitleRef.current);
+        if (featuringListRef.current) observer.observe(featuringListRef.current);
         if (getReadyRef.current) observer.observe(getReadyRef.current);
         if (defiRevolutionRef.current) observer.observe(defiRevolutionRef.current);
         if (defiGraffitiRef.current) observer.observe(defiGraffitiRef.current);
 
         return () => {
             if (welcomeRef.current) observer.unobserve(welcomeRef.current);
-            if (secondHeaderRef.current) observer.unobserve(secondHeaderRef.current);
-            if (thirdHeaderRef.current) observer.unobserve(thirdHeaderRef.current);
-            if (financeRef.current) observer.unobserve(financeRef.current);
-            if (jellyTitle.current) observer.unobserve(jellyTitle.current);
-            if (featuringRef.current) observer.unobserve(featuringRef.current);
+            if (diveRef.current) observer.unobserve(diveRef.current);
+            if (jellyTitleRef.current) observer.unobserve(jellyTitleRef.current);
+            if (featuresTitleRef.current) observer.unobserve(featuresTitleRef.current);
+            if (exploreTitleRef.current) observer.unobserve(exploreTitleRef.current);
+            if (featuringListRef.current) observer.unobserve(featuringListRef.current);
             if (getReadyRef.current) observer.unobserve(getReadyRef.current);
             if (defiRevolutionRef.current) observer.unobserve(defiRevolutionRef.current);
             if (defiGraffitiRef.current) observer.unobserve(defiGraffitiRef.current);
@@ -118,9 +123,11 @@ function App() {
             ref={appRef}
             style={{ maxHeight: '100vh', display: "flex" }}
         >
+            {/*<div className="animated-background" style={{ transform: `translateY(${backgroundPosition}%)`, width: limit / 2 }}></div>*/}
             <Scrollbar
                 className="app__scrollbar"
                 ref={scrollbar}
+                onScroll={onSmoothScroll}
                 plugins={{
                     overscroll: {
                         effect: "glow",
@@ -131,7 +138,7 @@ function App() {
                 <JellyfishVideo
                     isFirstIdle={isWelcomeVisible}
                     isThirdIdle={isSecondHeaderVisible}
-                    isFifthIdle={isThirdHeaderVisible}
+                    top={top}
                 />
                 <div
                     ref={welcomeRef}
@@ -140,43 +147,58 @@ function App() {
                     <HeaderWelcome />
                 </div>
                 <div
-                    ref={secondHeaderRef}
+                    ref={diveRef}
                     id="headerDive"
                 >
                     <HeaderDive appRef={appRef}/>
                 </div>
-                <WelcomeDefiGraffiti appRef={appRef}/>
-                <FeaturesTitle appRef={appRef}/>
-                <ExploreTitle appRef={appRef}/>
-                <div ref={financeRef} id="financeTitle">
-                    <FinanceTitle appRef={appRef}/>
-                </div>
-                <div ref={jellyTitle} id="jellyTitle">
-                    <JellyTitle appRef={appRef}/>
+                <WelcomeDefiGraffiti />
+                <div
+                    ref={featuresTitleRef}
+                    id="featuresTitle"
+                >
+                    <FeaturesTitle
+                        appRef={appRef}
+                        isVisible={isFeaturesTitle}
+                    />
                 </div>
                 <div
-                    ref={featuringRef}
+                    ref={exploreTitleRef}
+                    id="exploreTitle"
+                >
+                    <ExploreTitle
+                        appRef={appRef}
+                        isVisible={isExploreTitle}
+                    />
+                </div>
+                <div
+                    ref={jellyTitleRef}
+                    id="jellyTitle"
+                >
+                    <JellyTitle
+                        appRef={appRef}
+                        isVisible={isJellyTitle}
+                    />
+                </div>
+                <div
+                    ref={featuringListRef}
                     id="featuring"
-                    className="featuring-list"
                 >
                     <FeaturingList/>
                 </div>
-                <div ref={getReadyRef} id="get-ready">
-                    <GetReady appRef={appRef}/>
-                </div>
-                <div ref={defiRevolutionRef} id="defi-revolution">
-                    <DefiRevolution appRef={appRef}/>
+                <div ref={defiRevolutionRef} id="defiRevolution">
+                    <DefiRevolution appRef={appRef} isVisible={isDefiRevolution}/>
                 </div>
                 <div ref={defiGraffitiRef} id="defi-graffiti">
                     <DefiGraffiti appRef={appRef}/>
                 </div>
-                <JellyfishBottom
-                    isBottom={true}
-                    isFeaturing={isFeaturing}
-                    isGetReady={isGetReady}
-                    isRevolution={isDefiRevolution}
-                    isGraffiti={isDefiGraffiti}
-                />
+                {/*<JellyfishBottom*/}
+                {/*    isBottom={true}*/}
+                {/*    isFeaturing={isFeaturing}*/}
+                {/*    isGetReady={isGetReady}*/}
+                {/*    isRevolution={isDefiRevolution}*/}
+                {/*    isGraffiti={isDefiGraffiti}*/}
+                {/*/>*/}
                 <BurnEvent/>
                 <Footer/>
                 <TickerLine/>

@@ -1,32 +1,67 @@
 @import "../variables.scss";
 
+.test {
+  width: 100%;
+  background-color: red;
+}
+
+.animated-background {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $col-graffiti-bg;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 0;
+}
+
+.header_titles {
+  z-index: 1111;
+}
+
 .featuring-list {
   position: relative;
 }
 
-.feature-page-wrapper {
-  height: 100vh;
+#featuresTitle, #exploreTitle {
+  //background-color: $col-graffiti-bg;
+  z-index: 100;
+
 }
 
 .features-title {
   position: relative;
-  height: 100vh;
+  //height: 100%;
+  //width: 100%;
 }
 
 .features-title__jelly {
   position: relative;
-  height: 70vh;
-}
-
-.features-list {
-  scroll-snap-align: start;
-  scroll-snap-type: none;
 }
 
 .features-title__content {
   width: 100%;
   height: 100%;
-  background-color: $col-graffiti-bg;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: $col-graffiti-bg;
+    z-index: -10;
+  }
+
+  &--padding {
+    padding: 4.2rem 0 12.2rem 0;
+  }
+
+  &--revolution {
+    padding: 4.2rem 0 32.2rem 0;
+  }
 
   @media (max-width: $screen-medium-size) {
     & {
@@ -42,7 +77,7 @@
 }
 
 .features-title--padding {
-  padding: 24rem 16rem;
+  padding: 24rem 16rem 18rem;
 }
 
 .features-title__wrapper--jelly {
@@ -51,7 +86,7 @@
 }
 
 .features-title__wrapper {
-  position: relative;
+  //position: relative;
   max-width: 144rem;
   width: 100%;
   height: 100%;
@@ -125,6 +160,7 @@
 }
 
 .features-title__img-shell-wrapper {
+  z-index: -1;
   transform: rotate(120deg);
   position: absolute;
   top: 30rem;
@@ -140,6 +176,7 @@
 }
 
 .features-title__img-stone-wrapper {
+  z-index: -1;
   transform: rotate(-70deg);
   position: absolute;
   top: 14rem;
@@ -232,9 +269,6 @@
 }
 
 .features-title__phrase {
-  position: absolute;
-  top: 20rem;
-  left: 20rem;
   z-index: 100;
   width: 100%;
   color: $col-text;
